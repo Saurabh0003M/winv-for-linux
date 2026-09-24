@@ -6,8 +6,8 @@
       <summary>Open clipboard history (Windows: Win+V)</summary>
     </key>
     <key name="toggle-emoji" type="as">
-      <default><![CDATA[['<Super>period', '<Super>semicolon']]]></default>
-      <summary>Open emoji, kaomoji and symbols (Windows: Win+. and Win+;)</summary>
+      <default><![CDATA[['<Super>semicolon', '<Super>period']]]></default>
+      <summary>Open emoji, kaomoji and symbols (Windows: Win+; and Win+.)</summary>
     </key>
     <key name="panel-style" type="s">
       <choices>

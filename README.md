@@ -31,7 +31,8 @@ It works on **Wayland and X11** and takes its colours from your GNOME theme.
 - **Private by default** — unpinned history lives in memory only and is forgotten when you log
   out; pinned items are stored readable only by you; copies from password managers (KeePassXC)
   and files copied in the file manager are left out, as on Windows. No network code.
-- **Emoji picker on Super+.** (and Super+;) — 1,500+ emoji with search and skin tones, kaomoji
+- **Emoji picker on <kbd>Super</kbd> + <kbd>;</kbd>** (or <kbd>Super</kbd> + <kbd>.</kbd>, as on Windows) — 1,500+ emoji
+  with search and skin tones, kaomoji
   ( ͡° ͜ʖ ͡°) and symbols (math, arrows, currency, Greek, …). The panel stays open so you can
   insert several.
 - **Opens at your text cursor**, falling back to the mouse position.
@@ -74,12 +75,15 @@ To remove it: `./install.sh --uninstall`.
 
 | Keys | What it does |
 |---|---|
-| **Super+V** | clipboard history |
-| **Super+.** or **Super+;** | emoji, kaomoji and symbols |
-| Arrow keys, Tab | move around |
-| Enter or click | paste the item / insert the emoji |
-| Delete | remove the selected clipboard item |
-| Esc, click outside, Super+V again | close |
+| <kbd>Super</kbd> + <kbd>V</kbd> | clipboard history |
+| <kbd>Super</kbd> + <kbd>;</kbd> (semicolon) or <kbd>Super</kbd> + <kbd>.</kbd> (full stop) | emoji, kaomoji and symbols |
+| arrow keys, <kbd>Tab</kbd> | move around |
+| <kbd>Enter</kbd> or click | paste the item / insert the emoji |
+| <kbd>Delete</kbd> | remove the selected clipboard item |
+| <kbd>Esc</kbd>, click outside, <kbd>Super</kbd> + <kbd>V</kbd> again | close |
+
+<kbd>Super</kbd> is the Windows key. For emoji, press it together with the semicolon key (right of
+<kbd>L</kbd>) or the full-stop key (right of the comma): no <kbd>Shift</kbd>, and not the plus key.
 
 ## Settings
 

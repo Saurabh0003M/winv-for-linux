@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- The emoji shortcut is listed as Super+; (semicolon) first, then Super+. (full stop), and the README
+  says which keys those are ("Super+." was easy to misread as Super and the plus key).
+
 ## 2 — 2026-09-24
 
 WinV now works on GNOME 46 to 51: Ubuntu 24.04 and 26.04 LTS, Fedora, Debian 13, Arch.

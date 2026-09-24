@@ -3,7 +3,7 @@
 > Windows 11 style clipboard history (Win+V) and emoji picker (Win+.) for Ubuntu 22.04, 24.04 and 26.04, Fedora, Debian 13 and Arch (GNOME Shell 42 and 46–51), as a GNOME Shell extension. Open source (GPL-2.0-or-later).
 
 - Super+V: clipboard history with text and images; click or Enter pastes into the previous app, pin, delete, clear all.
-- Super+. / Super+;: emoji (search, skin tones), kaomoji and symbols.
+- Super+; (semicolon) or Super+. (full stop): emoji (search, skin tones), kaomoji and symbols.
 - Follows the active GNOME Shell theme (Yaru accent colours, light/dark, Adwaita, custom themes) or a Windows 11 look.
 - Works on Wayland and X11. No network access; unpinned history is kept in memory only.
 - Install: git clone https://github.com/Saurabh0003M/winv-for-linux && ./install.sh, then log out and back in.
