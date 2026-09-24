@@ -176,9 +176,10 @@ def settings_check():
     log = open(f'{OUT}/settings.log', 'w')
     prefs = subprocess.Popen(['gjs', '-m', service], env=env, stdout=log, stderr=subprocess.STDOUT)
     try:
-        wait(lambda: subprocess.run(['gdbus', 'introspect', '--session', '--dest', 'org.gnome.Shell.Extensions',
-                                     '--object-path', '/org/gnome/Shell/Extensions'],
-                                    capture_output=True).returncode == 0, timeout=10)
+        # NameHasOwner, not a call to the service itself: that would make D-Bus start a second copy
+        # of it, one that cannot reach the screen
+        wait(lambda: call('org.freedesktop.DBus', '/org/freedesktop/DBus', 'org.freedesktop.DBus', 'NameHasOwner',
+                          GLib.Variant('(s)', ('org.gnome.Shell.Extensions',)), '(b)')[0], timeout=10)
         subprocess.run(['gnome-extensions', 'prefs', UUID], check=False)
         opened = wait(lambda: ev("global.display.list_all_windows().some(w => w.title === 'WinV for Linux')"),
                       timeout=15, step=0.3)
