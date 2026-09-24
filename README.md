@@ -164,10 +164,10 @@ nothing.
 
 ## How this was made
 
-WinV for Linux was designed and tested by **Saurabh Tomke** and written with **Claude**,
+I (Saurabh Tomke) designed and tested WinV for Linux; the code was written with **Claude**,
 Anthropic's AI assistant. Every feature was tried on a real Ubuntu 22.04 desktop and in isolated
-GNOME Shell test sessions before release. For version 2, Saurabh wrote the port of the Settings
-window to GNOME 46 and later.
+GNOME Shell test sessions before release. For version 2, I ported the Settings window to GNOME 46
+and later.
 
 ## License
 
