@@ -156,6 +156,33 @@ def run_checks():
         paste_checks()
     finally:
         target.terminate()
+    settings_check()
+
+
+def settings_check():
+    """Opens WinV's Settings window the way the Extensions app does, through GNOME's
+    org.gnome.Shell.Extensions service, which we start ourselves to catch its errors."""
+    service = next((p for p in ('/usr/share/gnome-shell/org.gnome.Shell.Extensions',
+                                '/usr/libexec/gnome-shell/org.gnome.Shell.Extensions') if os.path.exists(p)), None)
+    if GNOME < 45 or not service:
+        return
+    env = dict(os.environ, WAYLAND_DISPLAY=WAYLAND_DISPLAY, GDK_BACKEND='wayland')
+    log = open(f'{OUT}/settings.log', 'w')
+    prefs = subprocess.Popen(['gjs', '-m', service], env=env, stdout=log, stderr=subprocess.STDOUT)
+    try:
+        wait(lambda: subprocess.run(['gdbus', 'introspect', '--session', '--dest', 'org.gnome.Shell.Extensions',
+                                     '--object-path', '/org/gnome/Shell/Extensions'],
+                                    capture_output=True).returncode == 0, timeout=10)
+        subprocess.run(['gnome-extensions', 'prefs', UUID], check=False)
+        opened = wait(lambda: ev("global.display.list_all_windows().some(w => w.title === 'WinV for Linux')"),
+                      timeout=15, step=0.3)
+        time.sleep(1.5)
+        screenshot('settings')
+        with open(f'{OUT}/settings.log', encoding='utf-8', errors='replace') as f:
+            errors = [line.strip() for line in f if 'error' in line.lower() or 'exception' in line.lower()]
+        check('Settings window opens without errors', opened and not errors, ' | '.join(errors[:2]))
+    finally:
+        prefs.terminate()
 
 
 def paste_checks():

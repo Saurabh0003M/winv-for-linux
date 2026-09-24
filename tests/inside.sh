@@ -7,8 +7,7 @@ export HOME=/tmp/home XDG_RUNTIME_DIR=/tmp/xdg
 export XDG_DATA_HOME=$HOME/.local/share XDG_CONFIG_HOME=$HOME/.config XDG_CACHE_HOME=$HOME/.cache
 mkdir -p "$HOME" "$XDG_RUNTIME_DIR"
 chmod 700 "$XDG_RUNTIME_DIR"
-mkdir -p /tmp/.X11-unix   # Xwayland needs it (for apps that only speak X11)
-chmod 1777 /tmp/.X11-unix
+[ -d /tmp/.X11-unix ] || install -d -m 1777 /tmp/.X11-unix   # Xwayland needs it (for apps that only speak X11)
 # and an empty system bus, so GNOME's system services fail politely instead of not at all
 dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/system_bus" --fork --nopidfile --print-address > /dev/null
 export DBUS_SYSTEM_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/system_bus"
