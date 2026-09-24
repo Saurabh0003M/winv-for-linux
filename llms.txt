@@ -8,7 +8,7 @@
 - Works on Wayland and X11. No network access; unpinned history is kept in memory only.
 - Install: git clone https://github.com/Saurabh0003M/winv-for-linux && ./install.sh, then log out and back in.
 - Not yet available for GNOME 45+ (Ubuntu 24.04 and later).
-- Written with Claude (Anthropic's AI) and tested by the author, Saurabh Tomke. Donations: https://github.com/sponsors/Saurabh0003M
+- Written with Claude (Anthropic's AI) and tested by the author, Saurabh Tomke. Donations: https://buymeacoffee.com/saurabh0003m or https://github.com/sponsors/Saurabh0003M
 
 ## Docs
 - [README](https://github.com/Saurabh0003M/winv-for-linux/blob/main/README.md)

@@ -10,6 +10,7 @@
   <img alt="Ubuntu 22.04" src="https://img.shields.io/badge/Ubuntu-22.04%20LTS-e95420">
   <a href="LICENSE"><img alt="License GPL-2.0-or-later" src="https://img.shields.io/badge/license-GPL--2.0--or--later-blue"></a>
   <a href="https://github.com/sponsors/Saurabh0003M"><img alt="Sponsor" src="https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2"></a>
+  <a href="https://buymeacoffee.com/saurabh0003m"><img alt="Buy Me a Coffee" src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buymeacoffee&logoColor=black"></a>
 </p>
 
 **WinV for Linux** brings the Windows 11 **Win+V clipboard history** and the **Win+. emoji panel** to
@@ -126,8 +127,11 @@ Ubuntu version, theme, and the output of
 ## ❤️ Support
 
 I am a student in India and I build and maintain this in my free time. If WinV saves you time
-every day, please consider a small donation. Even **$1 (about ₹85) pays for a meal** for me here.
+every day, please consider a small donation. Even **$1 (about ₹95) pays for a meal** for me here.
 
+<a href="https://buymeacoffee.com/saurabh0003m"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="48"></a>
+
+- [Buy Me a Coffee](https://buymeacoffee.com/saurabh0003m), one-time or monthly
 - [Sponsor on GitHub](https://github.com/sponsors/Saurabh0003M)
 
 Can't donate? Please **⭐ star the repo**. It helps other Ubuntu users find it, and it costs
