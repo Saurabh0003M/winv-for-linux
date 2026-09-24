@@ -1,0 +1,106 @@
+/* Windows 11 look. Dark by default; .winv-light is added while GNOME is in light mode. */
+.winv-panel {
+    width: 360px;
+    height: 480px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background-color: rgba(40, 40, 40, 0.98);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    font-size: 10.5pt;
+}
+
+.winv-tabs { padding: 8px 10px 2px 10px; spacing: 6px; }
+.winv-tab { width: 56px; height: 42px; border-radius: 5px; color: rgba(255, 255, 255, 0.72); }
+.winv-tab:hover { background-color: rgba(255, 255, 255, 0.06); color: #ffffff; }
+.winv-tab:checked { color: #ffffff; }
+.winv-tab-icon { icon-size: 18px; }
+.winv-tab-text { font-size: 11pt; font-weight: bold; }
+.winv-tab-bar { width: 16px; height: 3px; margin-top: 6px; border-radius: 2px; }
+.winv-tab:checked .winv-tab-bar { background-color: #4cc2ff; }
+
+.winv-page { padding: 6px 12px 10px 12px; spacing: 6px; }
+.winv-section-title { font-size: 10pt; font-weight: bold; color: rgba(255, 255, 255, 0.92); padding: 2px; }
+.winv-empty { color: rgba(255, 255, 255, 0.6); text-align: center; padding: 0 24px; }
+.winv-separator { height: 1px; background-color: rgba(255, 255, 255, 0.08); }
+
+.winv-search {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+    color: #ffffff;
+    caret-color: #ffffff;
+    selection-background-color: #4cc2ff;
+    selected-color: #000000;
+}
+.winv-search:focus { background-color: rgba(24, 24, 24, 0.95); box-shadow: inset 0 -2px 0 0 #4cc2ff; }
+.winv-search StLabel.hint-text { color: rgba(255, 255, 255, 0.55); }
+.winv-search-icon { icon-size: 14px; padding-right: 8px; color: rgba(255, 255, 255, 0.7); }
+
+.winv-grid, .winv-grid-row, .winv-recent { spacing: 2px; }
+.winv-recent { spacing: 10px; }
+.winv-cell { border-radius: 4px; color: #ffffff; }
+.winv-cell:hover { background-color: rgba(255, 255, 255, 0.08); }
+.winv-cell:active { background-color: rgba(255, 255, 255, 0.04); }
+.winv-emoji { width: 40px; height: 40px; font-size: 20px; }
+.winv-symbol { width: 40px; height: 40px; font-size: 15px; }
+.winv-kaomoji { width: 154px; height: 40px; padding: 0 6px; font-size: 10.5pt; }
+
+.winv-bottom-bar { spacing: 2px; }
+.winv-bottom-btn { width: 31px; height: 32px; border-radius: 4px; font-size: 15px; color: #ffffff; }
+.winv-bottom-btn:hover { background-color: rgba(255, 255, 255, 0.08); }
+.winv-bottom-btn:checked { background-color: rgba(255, 255, 255, 0.11); }
+.winv-tone-row { spacing: 2px; padding: 4px; border-radius: 6px; background-color: rgba(58, 58, 58, 1); }
+.winv-chips { spacing: 4px; padding: 4px 0 2px 0; }
+.winv-chip { padding: 4px 11px; border-radius: 13px; font-size: 9pt; color: rgba(255, 255, 255, 0.85); background-color: rgba(255, 255, 255, 0.06); }
+.winv-chip:hover { background-color: rgba(255, 255, 255, 0.11); }
+.winv-chip:checked { background-color: #4cc2ff; color: #000000; }
+
+.winv-clip-header { padding: 0 0 2px 0; }
+.winv-text-btn { padding: 4px 10px; border-radius: 4px; font-size: 9.5pt; color: #ffffff; background-color: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.07); }
+.winv-text-btn:hover { background-color: rgba(255, 255, 255, 0.11); }
+.winv-clip-list { spacing: 6px; }
+.winv-clip { padding: 6px 4px 6px 12px; border-radius: 6px; background-color: rgba(255, 255, 255, 0.055); border: 1px solid rgba(255, 255, 255, 0.06); }
+.winv-clip:hover { background-color: rgba(255, 255, 255, 0.09); }
+.winv-clip-text { padding: 5px 0; color: rgba(255, 255, 255, 0.95); }
+.winv-clip-image { padding: 4px 0; }
+.winv-clip-actions { spacing: 2px; padding-left: 6px; }
+.winv-mini { width: 28px; height: 28px; border-radius: 4px; color: rgba(255, 255, 255, 0.6); }
+.winv-mini:hover { background-color: rgba(255, 255, 255, 0.09); color: #ffffff; }
+.winv-mini-icon { icon-size: 16px; }
+.winv-mini.winv-pinned { color: #4cc2ff; }
+
+/* keyboard focus ring */
+.winv-tab:focus, .winv-cell:focus, .winv-bottom-btn:focus, .winv-chip:focus,
+.winv-text-btn:focus, .winv-clip:focus, .winv-mini:focus { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.85); }
+
+/* ---- light mode ---- */
+.winv-panel.winv-light { background-color: rgba(249, 249, 249, 0.98); border-color: rgba(0, 0, 0, 0.10); color: #1b1b1b; box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28); }
+.winv-light .winv-tab { color: rgba(0, 0, 0, 0.62); }
+.winv-light .winv-tab:hover { background-color: rgba(0, 0, 0, 0.05); color: #000000; }
+.winv-light .winv-tab:checked { color: #000000; }
+.winv-light .winv-tab:checked .winv-tab-bar { background-color: #005fb8; }
+.winv-light .winv-section-title { color: rgba(0, 0, 0, 0.9); }
+.winv-light .winv-empty { color: rgba(0, 0, 0, 0.6); }
+.winv-light .winv-separator { background-color: rgba(0, 0, 0, 0.08); }
+.winv-light .winv-search { background-color: rgba(255, 255, 255, 0.9); border-color: rgba(0, 0, 0, 0.12); color: #000000; caret-color: #000000; selection-background-color: #005fb8; selected-color: #ffffff; }
+.winv-light .winv-search:focus { background-color: #ffffff; box-shadow: inset 0 -2px 0 0 #005fb8; }
+.winv-light .winv-search StLabel.hint-text { color: rgba(0, 0, 0, 0.5); }
+.winv-light .winv-search-icon { color: rgba(0, 0, 0, 0.6); }
+.winv-light .winv-cell, .winv-light .winv-bottom-btn { color: #000000; }
+.winv-light .winv-cell:hover, .winv-light .winv-bottom-btn:hover, .winv-light .winv-mini:hover { background-color: rgba(0, 0, 0, 0.05); }
+.winv-light .winv-bottom-btn:checked { background-color: rgba(0, 0, 0, 0.08); }
+.winv-light .winv-tone-row { background-color: #ffffff; }
+.winv-light .winv-chip { color: rgba(0, 0, 0, 0.8); background-color: rgba(0, 0, 0, 0.05); }
+.winv-light .winv-chip:checked { background-color: #005fb8; color: #ffffff; }
+.winv-light .winv-text-btn { color: #000000; background-color: #ffffff; border-color: rgba(0, 0, 0, 0.1); }
+.winv-light .winv-clip { background-color: rgba(255, 255, 255, 0.9); border-color: rgba(0, 0, 0, 0.07); }
+.winv-light .winv-clip:hover { background-color: #ffffff; }
+.winv-light .winv-clip-text { color: rgba(0, 0, 0, 0.9); }
+.winv-light .winv-mini { color: rgba(0, 0, 0, 0.55); }
+.winv-light .winv-mini:hover { color: #000000; }
+.winv-light .winv-mini.winv-pinned { color: #005fb8; }
+.winv-light .winv-tab:focus, .winv-light .winv-cell:focus, .winv-light .winv-bottom-btn:focus, .winv-light .winv-chip:focus,
+.winv-light .winv-text-btn:focus, .winv-light .winv-clip:focus, .winv-light .winv-mini:focus { box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.8); }
