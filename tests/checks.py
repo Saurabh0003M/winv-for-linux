@@ -7,6 +7,7 @@ off and on. Screenshots, shell.log and results.txt go to /out.
 Runs inside the test container under dbus-run-session: see inside.sh and run.sh."""
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -99,12 +100,14 @@ def main():
     try:
         run_checks()
     finally:
+        # IBus first: when the shell goes away under it, ibus-daemon can abort, and on the host
+        # Ubuntu's crash reporter then pops up "System program problem detected"
+        subprocess.run(['ibus', 'exit'], check=False, capture_output=True)
         shell.terminate()
         try:
             shell.wait(10)
         except subprocess.TimeoutExpired:
             shell.kill()
-        subprocess.run(['ibus', 'exit'], check=False, capture_output=True)
 
     errors = [line for line in open(f'{OUT}/shell.log', encoding='utf-8', errors='replace')
               if 'winv' in line.lower() and ('error' in line.lower() or 'exception' in line.lower())]
@@ -166,6 +169,9 @@ def settings_check():
                                 '/usr/libexec/gnome-shell/org.gnome.Shell.Extensions') if os.path.exists(p)), None)
     if GNOME < 45 or not service:
         return
+    if not shutil.which('gjs'):   # it runs the service; Ubuntu packages it apart from gnome-shell
+        check('Settings window opens without errors', False, 'gjs is not installed in the test image')
+        return
     env = dict(os.environ, WAYLAND_DISPLAY=WAYLAND_DISPLAY, GDK_BACKEND='wayland')
     log = open(f'{OUT}/settings.log', 'w')
     prefs = subprocess.Popen(['gjs', '-m', service], env=env, stdout=log, stderr=subprocess.STDOUT)
@@ -179,7 +185,8 @@ def settings_check():
         time.sleep(1.5)
         screenshot('settings')
         with open(f'{OUT}/settings.log', encoding='utf-8', errors='replace') as f:
-            errors = [line.strip() for line in f if 'error' in line.lower() or 'exception' in line.lower()]
+            # JavaScript errors only: GTK's accessibility-bus and Mesa warnings are harmless here
+            errors = [line.strip() for line in f if 'JS ERROR' in line or 'Gjs-CRITICAL' in line]
         check('Settings window opens without errors', opened and not errors, ' | '.join(errors[:2]))
     finally:
         prefs.terminate()
