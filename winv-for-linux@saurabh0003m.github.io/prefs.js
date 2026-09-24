@@ -1,30 +1,19 @@
-'use strict';
 // SPDX-License-Identifier: GPL-2.0-or-later
-/* exported init, fillPreferencesWindow */
 // Preferences window (Extensions app > WinV for Linux > Settings), GNOME 42 / libadwaita.
-//
-// TODO(human): this file is still in the GNOME 42 format, so on GNOME 46+ the Settings window
-// fails to open. Convert it to an ES module, like extension.js was:
-//   - the imports at the top: `import Adw from 'gi://Adw';` (and Gio, Gtk), plus
-//     `import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';`
-//   - `init()` goes; `fillPreferencesWindow(window)` becomes a method of
-//     `export default class WinvPreferences extends ExtensionPreferences { ... }`
-//   - the settings come from `this.getSettings()` instead of ExtensionUtils
-//   - 'use strict' and the `/* exported */` line go (modules are strict and export explicitly)
-// Guide: https://gjs.guide/extensions/upgrading/gnome-shell-45.html#prefs-js
-const { Adw, Gio, Gtk } = imports.gi;
-const ExtensionUtils = imports.misc.extensionUtils;
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+
+import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 const STYLES = [
     ['system', 'System theme'],
     ['windows', 'Windows 11'],
 ];
 
-function init() {
-}
-
-function fillPreferencesWindow(window) {
-    const settings = ExtensionUtils.getSettings();
+export default class WinvPreferences extends ExtensionPreferences {
+    fillPreferencesWindow(window) {
+    const settings = this.getSettings();
     const page = new Adw.PreferencesPage();
 
     const look = new Adw.PreferencesGroup({ title: 'Look' });
@@ -63,6 +52,7 @@ function fillPreferencesWindow(window) {
     page.add(keys);
 
     window.add(page);
+    }
 }
 
 function accelLabel(accel) {
