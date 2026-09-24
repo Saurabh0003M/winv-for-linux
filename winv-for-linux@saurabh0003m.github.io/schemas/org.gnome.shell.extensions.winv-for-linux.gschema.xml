@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.winv-for-linux" path="/org/gnome/shell/extensions/winv-for-linux/">
+    <key name="toggle-clipboard" type="as">
+      <default><![CDATA[['<Super>v']]]></default>
+      <summary>Open clipboard history (Windows: Win+V)</summary>
+    </key>
+    <key name="toggle-emoji" type="as">
+      <default><![CDATA[['<Super>period', '<Super>semicolon']]]></default>
+      <summary>Open emoji, kaomoji and symbols (Windows: Win+. and Win+;)</summary>
+    </key>
+    <key name="panel-style" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="windows"/>
+      </choices>
+      <default>'system'</default>
+      <summary>Look of the panel</summary>
+      <description>"system" takes its colours from the active GNOME Shell theme; "windows" looks like Windows 11.</description>
+    </key>
+    <key name="history-size" type="i">
+      <range min="10" max="100"/>
+      <default>25</default>
+      <summary>Unpinned clipboard items to keep (Windows keeps 25)</summary>
+    </key>
+  </schema>
+</schemalist>

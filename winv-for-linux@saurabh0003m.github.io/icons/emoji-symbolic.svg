@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g fill="#bebebe">
+    <path fill-rule="evenodd" d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 1.3a5.7 5.7 0 1 0 0 11.4A5.7 5.7 0 0 0 8 2.3z"/>
+    <circle cx="5.7" cy="6.3" r="1.05"/>
+    <circle cx="10.3" cy="6.3" r="1.05"/>
+    <path d="M4.6 9h1.45a2 2 0 0 0 3.9 0h1.45a3.4 3.4 0 0 1-6.8 0z"/>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+{
+  "uuid": "testdriver@winv-for-linux",
+  "name": "WinV test driver",
+  "description": "Test-only: enables Eval and screenshots over D-Bus.",
+  "shell-version": ["42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"]
+}

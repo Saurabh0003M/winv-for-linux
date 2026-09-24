@@ -1,0 +1,13 @@
+{
+  "uuid": "winv-for-linux@saurabh0003m.github.io",
+  "name": "WinV for Linux",
+  "description": "Windows 11 style Win+V for GNOME: Super+V opens clipboard history (text and images) at the text cursor; click or Enter pastes into the app, pin keeps an item across restarts. Super+. opens the same panel on emoji, kaomoji and symbols. Matches your GNOME theme, or looks like Windows 11.",
+  "url": "https://github.com/Saurabh0003M/winv-for-linux",
+  "shell-version": ["46", "47", "48", "49", "50", "51"],
+  "settings-schema": "org.gnome.shell.extensions.winv-for-linux",
+  "donations": {
+    "buymeacoffee": "saurabh0003m",
+    "github": "Saurabh0003M"
+  },
+  "version": 2
+}
