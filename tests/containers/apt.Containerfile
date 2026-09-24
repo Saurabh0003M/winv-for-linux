@@ -1,6 +1,7 @@
-# Headless GNOME Shell for testing WinV. Ubuntu 22.04 = GNOME 42, 24.04 = 46, 26.04 = 50.
-ARG VERSION=24.04
-FROM docker.io/library/ubuntu:${VERSION}
+# Headless GNOME Shell for testing WinV on Ubuntu or Debian (see ../run.sh).
+# Ubuntu 22.04 = GNOME 42, 24.04 = 46, 26.04 = 50; Debian 13 (trixie) = 48.
+ARG IMAGE=docker.io/library/ubuntu:24.04
+FROM ${IMAGE}
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gnome-shell dconf-gsettings-backend dconf-service dbus dbus-user-session \

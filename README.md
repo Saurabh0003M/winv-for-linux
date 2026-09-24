@@ -6,8 +6,9 @@
 
 <p align="center">
   <a href="https://github.com/Saurabh0003M/winv-for-linux/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/Saurabh0003M/winv-for-linux"></a>
-  <img alt="GNOME Shell 42" src="https://img.shields.io/badge/GNOME%20Shell-42-4a86cf">
-  <img alt="Ubuntu 22.04" src="https://img.shields.io/badge/Ubuntu-22.04%20LTS-e95420">
+  <img alt="GNOME Shell 42 and 46 to 51" src="https://img.shields.io/badge/GNOME%20Shell-42%20%7C%2046%E2%80%9351-4a86cf">
+  <img alt="Ubuntu 22.04, 24.04 and 26.04" src="https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04%20%7C%2026.04-e95420">
+  <a href="https://github.com/Saurabh0003M/winv-for-linux/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/Saurabh0003M/winv-for-linux/actions/workflows/test.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License GPL-2.0-or-later" src="https://img.shields.io/badge/license-GPL--2.0--or--later-blue"></a>
   <a href="https://github.com/sponsors/Saurabh0003M"><img alt="Sponsor" src="https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2"></a>
   <a href="https://buymeacoffee.com/saurabh0003m"><img alt="Buy Me a Coffee" src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buymeacoffee&logoColor=black"></a>
@@ -15,8 +16,9 @@
 
 **WinV for Linux** brings the Windows 11 **Win+V clipboard history** and the **Win+. emoji panel** to
 Ubuntu. Press **Super+V** to see everything you copied, text and images, and click an item to
-paste it straight into the app you are typing in. It is a GNOME Shell extension for **Ubuntu 22.04
-LTS (GNOME 42)**, works on **Wayland and X11**, and takes its colours from your GNOME theme.
+paste it straight into the app you are typing in. It is a GNOME Shell extension for **Ubuntu 22.04,
+24.04 and 26.04 LTS**, **Fedora**, **Debian 13**, **Arch** and any Linux with **GNOME 42 or 46–51**.
+It works on **Wayland and X11** and takes its colours from your GNOME theme.
 
 ## Features
 
@@ -45,7 +47,9 @@ LTS (GNOME 42)**, works on **Wayland and X11**, and takes its colours from your 
 
 ## Install
 
-Needs **Ubuntu 22.04 LTS** or another Linux with **GNOME Shell 42**.
+Works with **GNOME 42** (Ubuntu 22.04) and **GNOME 46 to 51** (Ubuntu 24.04 and 26.04, Fedora 43
+and later, Debian 13, Arch, openSUSE Tumbleweed, ...). `gnome-shell --version` shows yours; the
+installer picks the right version of WinV for it.
 
 ```bash
 git clone https://github.com/Saurabh0003M/winv-for-linux.git
@@ -53,14 +57,15 @@ cd winv-for-linux
 ./install.sh
 ```
 
-Then **log out and back in** (GNOME on Wayland loads new extensions at login) and press
-**Super+V**. WinV takes Super+V over from GNOME's notification list, which keeps Super+M
-(`./install.sh --uninstall` gives it back).
+Then **log out and back in** (GNOME loads new extensions at login; on Xorg, Alt+F2 → `r` → Enter
+is enough) and press **Super+V**. WinV takes Super+V over from GNOME's notification list, which
+keeps Super+M (`./install.sh --uninstall` gives it back).
 
-Or install the zip from the [latest release](https://github.com/Saurabh0003M/winv-for-linux/releases):
+Or install the zip for your GNOME from the [latest release](https://github.com/Saurabh0003M/winv-for-linux/releases)
+(`winv-for-linux-gnome-46-51.zip`, or `winv-for-linux-gnome-42.zip` for Ubuntu 22.04):
 
 ```bash
-gnome-extensions install --force winv-for-linux@saurabh0003m.github.io.shell-extension.zip
+gnome-extensions install --force winv-for-linux-gnome-46-51.zip
 ```
 
 To remove it: `./install.sh --uninstall`.
@@ -106,8 +111,20 @@ The emoji shortcut is `toggle-emoji`. Log out and back in after changing them.
 
 ## FAQ
 
-**Does it work on Ubuntu 24.04 or newer (GNOME 45+)?**
-Not yet. GNOME 45 changed how extensions are written; a port is planned and help is welcome.
+**Which Linux versions does it work on?**
+Any Linux with GNOME Shell 42 or 46 to 51: Ubuntu 22.04, 24.04 and 26.04, Fedora, Debian 13, Arch,
+openSUSE Tumbleweed and more. GNOME 45 is not supported (no maintained distribution ships it) and
+GNOME 43–44 (Debian 12) are untested.
+
+**Will it keep working after updates?**
+Ubuntu LTS keeps the same GNOME version for its whole life, so updates do not break it. A new
+GNOME comes out every March and September and can change what extensions rely on, so WinV is
+tested every month against the upcoming GNOME (Fedora Rawhide) and updated for it.
+
+**KDE, Linux Mint, Xfce?**
+WinV is a GNOME Shell extension. KDE Plasma already has both features built in (Meta+V for
+clipboard history, Meta+. for emoji). Cinnamon (Linux Mint), Xfce and COSMIC would need a
+separate program.
 
 **Why is it not on extensions.gnome.org?**
 The code was written with an AI assistant (see below), and extensions.gnome.org does not accept
@@ -123,6 +140,14 @@ Indicator) also uses Super+V, disable one of them.
 **Found a bug?** [Open an issue](https://github.com/Saurabh0003M/winv-for-linux/issues) with your
 Ubuntu version, theme, and the output of
 `journalctl -b -o cat /usr/bin/gnome-shell | grep -i winv`.
+
+## Development
+
+`tests/run.sh ubuntu:24.04` starts a headless GNOME Shell in a [podman](https://podman.io)
+container and checks WinV there: loading, copying, pasting into a GTK app with IBus running,
+emoji, theme colours, the Windows style, and turning it off and on, with screenshots in
+`tests/out/`. GitHub runs the same tests on every push for GNOME 42, 46, 48, 49, 50 and the next
+GNOME. The GNOME 42 version lives in `gnome-42/`.
 
 ## ❤️ Support
 

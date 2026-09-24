@@ -1,13 +1,13 @@
 # WinV for Linux
 
-> Windows 11 style clipboard history (Win+V) and emoji picker (Win+.) for Ubuntu 22.04 / GNOME Shell 42, as a GNOME Shell extension. Open source (GPL-2.0-or-later).
+> Windows 11 style clipboard history (Win+V) and emoji picker (Win+.) for Ubuntu 22.04, 24.04 and 26.04, Fedora, Debian 13 and Arch (GNOME Shell 42 and 46–51), as a GNOME Shell extension. Open source (GPL-2.0-or-later).
 
 - Super+V: clipboard history with text and images; click or Enter pastes into the previous app, pin, delete, clear all.
 - Super+. / Super+;: emoji (search, skin tones), kaomoji and symbols.
 - Follows the active GNOME Shell theme (Yaru accent colours, light/dark, Adwaita, custom themes) or a Windows 11 look.
 - Works on Wayland and X11. No network access; unpinned history is kept in memory only.
 - Install: git clone https://github.com/Saurabh0003M/winv-for-linux && ./install.sh, then log out and back in.
-- Not yet available for GNOME 45+ (Ubuntu 24.04 and later).
+- Tested automatically on GNOME 42, 46, 48, 49, 50 and the upcoming GNOME. Not for GNOME 45, KDE, Cinnamon or Xfce.
 - Written with Claude (Anthropic's AI) and tested by the author, Saurabh Tomke. Donations: https://buymeacoffee.com/saurabh0003m or https://github.com/sponsors/Saurabh0003M
 
 ## Docs

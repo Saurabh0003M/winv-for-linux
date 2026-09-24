@@ -670,7 +670,9 @@ class ClipboardPanel {
         if (this._grab)
             return true;
         const grab = Main.pushModal(this._container, { actionMode: Shell.ActionMode.POPUP });
-        if (grab.get_seat_state() !== Clutter.GrabState.ALL) {
+        // Up to GNOME 49 a grab can fail while something else holds the keyboard. GNOME 50
+        // removed get_seat_state(): there a grab always succeeds, and GNOME's own dialogs stopped checking.
+        if (grab.get_seat_state && grab.get_seat_state() !== Clutter.GrabState.ALL) {
             Main.popModal(grab);
             return false;
         }
@@ -794,7 +796,7 @@ class ClipboardPanel {
     _setScrollChild(scroll, child) {
         scroll.get_child()?.destroy();
         scroll.child = child;
-        scroll.vscroll.adjustment.value = 0;
+        scroll.vadjustment.value = 0;
     }
 
     _emptyLabel(text) {
@@ -1101,7 +1103,7 @@ class ClipboardPanel {
         // (an St.Button label is a plain ClutterText in GNOME 42)
         for (const chip of row.get_children())
             chip.get_child().set_ellipsize(Pango.EllipsizeMode.NONE);
-        const adjustment = scroll.hscroll.adjustment;
+        const adjustment = scroll.hadjustment;   // (hscroll, the scroll bar, went in GNOME 50)
         scroll.connect('scroll-event', (actor, event) => {
             const direction = event.get_scroll_direction();
             let delta;

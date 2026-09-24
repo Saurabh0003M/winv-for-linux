@@ -1,5 +1,14 @@
 # Changelog
 
+## 2 — 2026-09-24
+
+WinV now works on GNOME 46 to 51: Ubuntu 24.04 and 26.04 LTS, Fedora, Debian 13, Arch.
+
+- A new version of the extension for GNOME 46 and later. GNOME 42 (Ubuntu 22.04) keeps its own
+  version in `gnome-42/`; `install.sh` picks the right one.
+- Automated tests in podman containers for every supported GNOME, and monthly for the next one.
+- Donation links in the Extensions app (GNOME 46 and later).
+
 ## 1 — 2026-09-24
 
 First public release, for GNOME Shell 42 (Ubuntu 22.04 LTS).

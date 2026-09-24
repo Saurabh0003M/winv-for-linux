@@ -1,0 +1,36 @@
+# Runs tests/run.sh on every GNOME version WinV supports, in podman containers on GitHub's
+# machines. The monthly run tries Fedora Rawhide, which gets the next GNOME months before its
+# release: when that fails, WinV needs updating before users get the new GNOME.
+name: Test on GNOME versions
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: GNOME ${{ matrix.gnome }} (${{ matrix.target }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { gnome: '42', target: 'ubuntu:22.04' }
+          - { gnome: '46', target: 'ubuntu:24.04' }
+          - { gnome: '48', target: 'debian:trixie' }
+          - { gnome: '49', target: 'fedora:43' }
+          - { gnome: '50', target: 'ubuntu:26.04' }
+          - { gnome: 'next', target: 'fedora:rawhide' }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: tests/run.sh '${{ matrix.target }}'
+      - name: Keep the screenshots and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gnome-${{ matrix.gnome }}
+          path: tests/out/
